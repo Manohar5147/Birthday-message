@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>🎉 Surprise 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+  overflow-x: hidden;
+}
+
+/* Intro */
+#intro {
+  margin-top: 20vh;
+}
+
+#intro h2 {
+  font-size: 26px;
+}
+
+#startBtn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 18px;
+  background: #ff4081;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Video */
+#videoContainer {
+  display: none;
+}
+
+video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Final (IMPORTANT FIXED) */
+#final {
+  display: none; /* 👈 hidden initially */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  overflow-y: auto;
+}
+
+/* Text */
+h1 {
+  font-size: 32px;
+  color: yellow;
+}
+
+p {
+  font-size: 18px;
+  max-width: 90%;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* Button */
+#noteBtn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: red;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Kannada message */
+#kannadaBox {
+  display: none;
+  margin-top: 20px;
+  font-size: 20px;
+  color: yellow;
+  max-width: 90%;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* 🌸 Flowers */
+.flower {
+  position: absolute;
+  top: -50px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from { transform: translateY(-50px); }
+  to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Intro -->
+<div id="intro">
+  <h2 id="introText"></h2>
+  <button id="startBtn">👉 Click for Surprise</button>
+</div>
+
+<!-- Video -->
+<div id="videoContainer">
+  <video id="video">
+    <source src="birthady.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- Final -->
+<div id="final">
+  <h1>🎉 Happy Birthday 🎉</h1>
+  <p id="msg"></p>
+
+  <button id="noteBtn">⚠️ Important Note - Click Here</button>
+
+  <div id="kannadaBox"></div>
+</div>
+
+<script>
+const name = "Mansoor";
+
+// Elements
+const introText = document.getElementById("introText");
+const intro = document.getElementById("intro");
+const btn = document.getElementById("startBtn");
+const video = document.getElementById("video");
+const videoContainer = document.getElementById("videoContainer");
+const final = document.getElementById("final");
+const msg = document.getElementById("msg");
+const noteBtn = document.getElementById("noteBtn");
+const kannadaBox = document.getElementById("kannadaBox");
+
+// Intro typing
+const introMsg = "Hi " + name + " 😄\nYou have a surprise 🎁\nClick below 👇";
+let i = 0;
+
+function typeIntro() {
+  if (i < introMsg.length) {
+    introText.innerHTML += introMsg.charAt(i);
+    i++;
+    setTimeout(typeIntro, 40);
+  }
+}
+typeIntro();
+
+// Click → Play video
+btn.onclick = function() {
+  intro.style.display = "none";
+  videoContainer.style.display = "block";
+
+  video.currentTime = 0;
+  video.play();
+};
+
+// After video ends
+video.addEventListener("ended", function() {
+  videoContainer.style.display = "none";
+  final.style.display = "flex"; // 👈 shows only here
+
+  showMessage();
+  startFlowers();
+});
+
+// Typing message
+const text = "Hey " + name + " 😎🔥\n\nHappy Birthday! 🎉\nWishing you happiness, success & crazy fun 🥳\n\nEnjoy your day like a KING 👑\n\n- From Manohar 💙";
+let j = 0;
+
+function showMessage() {
+  function typing() {
+    if (j < text.length) {
+      msg.innerHTML += text.charAt(j);
+      j++;
+      setTimeout(typing, 40);
+    }
+  }
+  typing();
+}
+
+// Kannada message
+noteBtn.onclick = function() {
+  kannadaBox.style.display = "block";
+
+  kannadaBox.innerText =
+  "ನಿಮ್ಮ ಕಾಳಿಂಗನಿಗೆ ಇಂಟರ್ವ್ಯೂ ಶೆಡ್ಯೂಲ್ ಮಾಡಲು ಹೇಳಿ ಗುರು 😄🔥";
+};
+
+// Flowers
+function startFlowers() {
+  const emojis = ["🌸","🌼","🌺","💮"];
+
+  setInterval(() => {
+    let f = document.createElement("div");
+    f.className = "flower";
+
+    f.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    let duration = Math.random() * 3 + 3;
+    f.style.animationDuration = duration + "s";
+
+    document.body.appendChild(f);
+
+    setTimeout(() => f.remove(), duration * 1000);
+  }, 200);
+}
+</script>
+
+</body>
+</html>
