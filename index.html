@@ -134,13 +134,13 @@ p {
   <h1>🎉 Happy Birthday 🎉</h1>
   <p id="msg"></p>
 
-  <button id="noteBtn">⚠️ Important Note - Click Here</button>
+ 
 
   <div id="kannadaBox"></div>
 </div>
 
 <script>
-const name = "Mansoor";
+const name = "Varalakshmi";
 
 // Elements
 const introText = document.getElementById("introText");
@@ -154,7 +154,7 @@ const noteBtn = document.getElementById("noteBtn");
 const kannadaBox = document.getElementById("kannadaBox");
 
 // Intro typing
-const introMsg = "Hi " + name + " 😄\nYou have a surprise 🎁\nClick below 👇";
+const introMsg = "Hi " + name + " 😄\nYou have a surprise 🎁\n";
 let i = 0;
 
 function typeIntro() {
@@ -185,7 +185,7 @@ video.addEventListener("ended", function() {
 });
 
 // Typing message
-const text = "Hey " + name + " 😎🔥\n\nHappy Birthday! 🎉\nWishing you happiness, success & crazy fun 🥳\n\nEnjoy your day like a KING 👑\n\n- From Manohar 💙";
+const text = "Hey " + name + "😜 Happy Birthday Varalakshmi 🎉\n\nCongratulations! You are officially one year older... but don't worry, you still look young from very far away. 😂❤️\n\nToday is the only day I'll agree that you're always right. Enjoy it. 😏\n\nI was going to buy you a huge gift, but then I remembered you already have me. 😎✨\n\nHave an amazing birthday, Drama Queen 👑😂\n\nHappy Birthday once again! 🎂🎉\n\n-From, Manohar 🤞";
 let j = 0;
 
 function showMessage() {
@@ -199,17 +199,11 @@ function showMessage() {
   typing();
 }
 
-// Kannada message
-noteBtn.onclick = function() {
-  kannadaBox.style.display = "block";
 
-  kannadaBox.innerText =
-  "ನಿಮ್ಮ ಕಾಳಿಂಗನಿಗೆ ಇಂಟರ್ವ್ಯೂ ಶೆಡ್ಯೂಲ್ ಮಾಡಲು ಹೇಳಿ ಗುರು 😄🔥";
-};
 
 // Flowers
 function startFlowers() {
-  const emojis = ["🌸","🌼","🌺","💮"];
+  const emojis = ["❤️","💖","💕","🌹","💘","💝","🥰"];
 
   setInterval(() => {
     let f = document.createElement("div");
