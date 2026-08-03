@@ -10,7 +10,6 @@
       padding: 0;
       min-height: 100vh;
       background: radial-gradient(circle at top, #ffdde1, #ee9ca7, #ff4081);
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,14 +18,12 @@
     }
     .container {
       background: rgba(0,0,0,0.6);
-      padding: 40px;
+      padding: 20px;
       border-radius: 20px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.6);
       max-width: 700px;
-      width: 90%;
+      width: 95%;
       animation: fadeIn 1.5s ease;
-      position: relative;
-      z-index: 2;
       text-align: center;
     }
     h1, h2, p {
@@ -34,8 +31,8 @@
       text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
     }
     button {
-      padding: 16px 32px;
-      font-size: 20px;
+      padding: 14px 24px;
+      font-size: 18px;
       background: linear-gradient(90deg, #ff4081, #ff9800);
       color: white;
       border: none;
@@ -44,40 +41,32 @@
       margin-top: 20px;
       transition: all 0.4s ease;
       box-shadow: 0 6px 20px rgba(255,64,129,0.6);
-      letter-spacing: 1px;
+      width: 100%;
+      max-width: 300px;
     }
     button:hover {
       background: linear-gradient(90deg, #e91e63, #f57c00);
-      transform: scale(1.1);
+      transform: scale(1.05);
       box-shadow: 0 8px 25px rgba(255,152,0,0.8);
     }
-    video {
+    video, img.landscape {
       margin-top: 20px;
-      width: 700px;
-	  height: 350px;
+      width: 100%;       /* always fit container */
+      height: auto;      /* keep aspect ratio */
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-    }
-    img.landscape {
-      margin-top: 20px;
-      width: 450px;          /* smaller than full screen */
-     /*  max-width: 800px;    landscape size */
-      height: 350px;        /* keep aspect ratio */
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      display: block;
     }
     .hidden { display: none; }
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(30px);}
       to {opacity: 1; transform: translateY(0);}
     }
-    /* Falling emojis */
     .emoji {
       position: absolute;
       top: -50px;
       font-size: 2.5rem;
       animation: fallDown 4s linear infinite;
-      z-index: 0;
       opacity: 0.9;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
     }
@@ -85,6 +74,10 @@
       0% {transform: translateY(0) rotate(0deg); opacity: 0;}
       10% {opacity: 1;}
       100% {transform: translateY(120vh) rotate(360deg); opacity: 0;}
+    }
+    @media (max-width: 600px) {
+      h1, h2, p { font-size: 1rem; }
+      button { font-size: 16px; padding: 12px 20px; }
     }
   </style>
 </head>
@@ -117,10 +110,9 @@
 
   <div class="container hidden" id="step3">
     <h2>🎂💫 Happy Birthday Navya! 🎉</h2>
-<p>🎁 May your heart always be filled with happiness and your life with unforgettable moments. 💖
-
+    <p>🎁 May your heart always be filled with happiness and your life with unforgettable moments. 💖</p>
     <img src="sis.jpeg" alt="Birthday Cake" class="landscape">
-	<p>From, Manohar 🤞</p>
+    <p>From, Manohar 🤞</p>
   </div>
 
   <script>
