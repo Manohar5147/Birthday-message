@@ -1,227 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>🎉 Surprise 🎉</title>
-
-<style>
-body {
-  margin: 0;
-  background: black;
-  color: white;
-  text-align: center;
-  font-family: Arial;
-  overflow-x: hidden;
-}
-
-/* Intro */
-#intro {
-  margin-top: 20vh;
-}
-
-#intro h2 {
-  font-size: 26px;
-}
-
-#startBtn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  font-size: 18px;
-  background: #ff4081;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Video */
-#videoContainer {
-  display: none;
-}
-
-video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-}
-
-/* Final (IMPORTANT FIXED) */
-#final {
-  display: none; /* 👈 hidden initially */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 20px;
-  box-sizing: border-box;
-
-  overflow-y: auto;
-}
-
-/* Text */
-h1 {
-  font-size: 32px;
-  color: yellow;
-}
-
-p {
-  font-size: 18px;
-  max-width: 90%;
-  line-height: 1.5;
-  white-space: pre-line;
-}
-
-/* Button */
-#noteBtn {
-  margin-top: 20px;
-  padding: 12px 20px;
-  font-size: 16px;
-  background: red;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Kannada message */
-#kannadaBox {
-  display: none;
-  margin-top: 20px;
-  font-size: 20px;
-  color: yellow;
-  max-width: 90%;
-  line-height: 1.6;
-  white-space: pre-line;
-}
-
-/* 🌸 Flowers */
-.flower {
-  position: absolute;
-  top: -50px;
-  animation: fall linear forwards;
-}
-
-@keyframes fall {
-  from { transform: translateY(-50px); }
-  to { transform: translateY(100vh); }
-}
-</style>
-</head>
-
-<body>
-
-<!-- Intro -->
-<div id="intro">
-  <h2 id="introText"></h2>
-  <button id="startBtn">👉 Click for Surprise</button>
-</div>
-
-<!-- Video -->
-<div id="videoContainer">
-  <video id="video">
-    <source src="birthady.mp4" type="video/mp4">
-  </video>
-</div>
-
-<!-- Final -->
-<div id="final">
-  <h1>🎉 Happy Birthday 🎉</h1>
-  <p id="msg"></p>
-
- 
-
-  <div id="kannadaBox"></div>
-</div>
-
-<script>
-const name = "Varalakshmi";
-
-// Elements
-const introText = document.getElementById("introText");
-const intro = document.getElementById("intro");
-const btn = document.getElementById("startBtn");
-const video = document.getElementById("video");
-const videoContainer = document.getElementById("videoContainer");
-const final = document.getElementById("final");
-const msg = document.getElementById("msg");
-const noteBtn = document.getElementById("noteBtn");
-const kannadaBox = document.getElementById("kannadaBox");
-
-// Intro typing
-const introMsg = "Hi " + name + " 😄\nYou have a surprise 🎁\n";
-let i = 0;
-
-function typeIntro() {
-  if (i < introMsg.length) {
-    introText.innerHTML += introMsg.charAt(i);
-    i++;
-    setTimeout(typeIntro, 40);
-  }
-}
-typeIntro();
-
-// Click → Play video
-btn.onclick = function() {
-  intro.style.display = "none";
-  videoContainer.style.display = "block";
-
-  video.currentTime = 0;
-  video.play();
-};
-
-// After video ends
-video.addEventListener("ended", function() {
-  videoContainer.style.display = "none";
-  final.style.display = "flex"; // 👈 shows only here
-
-  showMessage();
-  startFlowers();
-});
-
-// Typing message
-const text = "Hey " + name + "😜 Happy Birthday Varalakshmi 🎉\n\nCongratulations! You are officially one year older... but don't worry, you still look young from very far away. 😂❤️\n\nToday is the only day I'll agree that you're always right. Enjoy it. 😏\n\nI was going to buy you a huge gift, but then I remembered you already have me. 😎✨\n\nHave an amazing birthday, Drama Queen 👑😂\n\nHappy Birthday once again! 🎂🎉\n\n-From, Manohar 🤞";
-let j = 0;
-
-function showMessage() {
-  function typing() {
-    if (j < text.length) {
-      msg.innerHTML += text.charAt(j);
-      j++;
-      setTimeout(typing, 40);
+  <meta charset="UTF-8">
+  <title>Birthday Surprise for Navya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #ffdde1, #ee9ca7, #ff4081);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
     }
-  }
-  typing();
-}
+    .container {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      max-width: 700px;
+      width: 90%;
+      animation: fadeIn 1.5s ease;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    h1, h2, p {
+      margin: 10px 0;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+    button {
+      padding: 16px 32px;
+      font-size: 20px;
+      background: linear-gradient(90deg, #ff4081, #ff9800);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(255,64,129,0.6);
+      letter-spacing: 1px;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #e91e63, #f57c00);
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(255,152,0,0.8);
+    }
+    video {
+      margin-top: 20px;
+      width: 700px;
+	  height: 350px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    img.landscape {
+      margin-top: 20px;
+      width: 450px;          /* smaller than full screen */
+     /*  max-width: 800px;    landscape size */
+      height: 350px;        /* keep aspect ratio */
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    .hidden { display: none; }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    /* Falling emojis */
+    .emoji {
+      position: absolute;
+      top: -50px;
+      font-size: 2.5rem;
+      animation: fallDown 4s linear infinite;
+      z-index: 0;
+      opacity: 0.9;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+    @keyframes fallDown {
+      0% {transform: translateY(0) rotate(0deg); opacity: 0;}
+      10% {opacity: 1;}
+      100% {transform: translateY(120vh) rotate(360deg); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Falling emojis -->
+  <div class="emoji" style="left:5%; animation-delay:0s;">❤️</div>
+  <div class="emoji" style="left:15%; animation-delay:0.5s;">💖</div>
+  <div class="emoji" style="left:25%; animation-delay:1s;">💕</div>
+  <div class="emoji" style="left:35%; animation-delay:1.5s;">🌹</div>
+  <div class="emoji" style="left:45%; animation-delay:2s;">💘</div>
+  <div class="emoji" style="left:55%; animation-delay:2.5s;">💝</div>
+  <div class="emoji" style="left:65%; animation-delay:3s;">🥰</div>
+  <div class="emoji" style="left:75%; animation-delay:3.5s;">✨</div>
+  <div class="emoji" style="left:85%; animation-delay:4s;">🎉</div>
+  <div class="emoji" style="left:95%; animation-delay:4.5s;">🎂</div>
 
+  <div class="container" id="step1">
+    <h1>Hi Navya, you have a surprise! 🎁</h1>
+    <button onclick="showStep2()">Click here</button>
+  </div>
 
+  <div class="container hidden" id="step2">
+    <p>Watch your surprise video below:</p>
+    <video id="birthdayVideo" controls>
+      <source src="sis.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button id="nextBtn" class="hidden" onclick="showStep3()">Next</button>
+  </div>
 
-// Flowers
-function startFlowers() {
-  const emojis = ["❤️","💖","💕","🌹","💘","💝","🥰"];
+  <div class="container hidden" id="step3">
+    <h2>🎂💫 Happy Birthday Navya! 🎉</h2>
+<p>🎁 May your heart always be filled with happiness and your life with unforgettable moments. 💖
 
-  setInterval(() => {
-    let f = document.createElement("div");
-    f.className = "flower";
+    <img src="sis.jpeg" alt="Birthday Cake" class="landscape">
+	<p>From, Manohar 🤞</p>
+  </div>
 
-    f.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-    f.style.left = Math.random() * 100 + "vw";
-    f.style.fontSize = (Math.random() * 20 + 15) + "px";
-
-    let duration = Math.random() * 3 + 3;
-    f.style.animationDuration = duration + "s";
-
-    document.body.appendChild(f);
-
-    setTimeout(() => f.remove(), duration * 1000);
-  }, 200);
-}
-</script>
-
+  <script>
+    function showStep2() {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
+    function showStep3() {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+    }
+    const video = document.getElementById("birthdayVideo");
+    const nextBtn = document.getElementById("nextBtn");
+    video.addEventListener("ended", function() {
+      nextBtn.classList.remove("hidden");
+    });
+  </script>
 </body>
 </html>
